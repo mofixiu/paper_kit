@@ -3,14 +3,19 @@
 **Ink on paper, for Flutter.** A UI kit of handmade-paper widgets: rubber stamps that
 leave a red impression, tickets you tear to confirm, receipts that print out of the
 top of the screen, sticky notes you peel by the corner, a send button that folds into
-a paper plane, and an iPhone frame with a fingertip that taps through your app by
-itself.
+a paper plane, an envelope with a wax seal, a typewriter, a shredder, a punch card,
+a highlighter, a marker for redacting, a paperclip and scissors, haptics that feel like
+paper, and an iPhone frame with a fingertip that taps through your app by itself.
 
 See every widget live, with its code, at **[kit.mofiyinebo.com](https://kit.mofiyinebo.com)**.
 
 <p>
   <img src="https://raw.githubusercontent.com/mofixiu/paper_kit/main/doc/screenshots/gallery-light.png" width="260" alt="The paper_kit gallery on cream paper">
   <img src="https://raw.githubusercontent.com/mofixiu/paper_kit/main/doc/screenshots/gallery-dark.png" width="260" alt="The paper_kit gallery on espresso paper">
+</p>
+<p>
+  <img src="https://raw.githubusercontent.com/mofixiu/paper_kit/main/doc/screenshots/desk-light.png" width="260" alt="An opened envelope, a typed letter and a flip pad">
+  <img src="https://raw.githubusercontent.com/mofixiu/paper_kit/main/doc/screenshots/office-light.png" width="260" alt="A highlighter switch, redacted text, a punch card, a paperclip and a cut line">
 </p>
 
 - No dependencies beyond Flutter, and no image assets: the paper grain is drawn in code.

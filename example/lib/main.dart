@@ -244,21 +244,19 @@ class GalleryPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const _Section(
+                  _Section(
                     title: 'paperclip',
                     child: Center(
                       child: PaperClip(
-                        attachment: PaperNote(
-                          rotation: 0,
-                          child: Text('receipt'),
+                        attachment: const _Slip(
+                          Text('receipt\n£12.40'),
+                          padding: EdgeInsets.fromLTRB(40, 14, 16, 14),
                         ),
-                        child: SizedBox(
-                          width: 260,
+                        child: _Slip(
+                          const Text('october expenses'),
+                          width: 280,
                           height: 150,
-                          child: PaperNote(
-                            rotation: 0,
-                            child: Text('october expenses'),
-                          ),
+                          padding: const EdgeInsets.fromLTRB(130, 20, 20, 20),
                         ),
                       ),
                     ),
@@ -266,10 +264,7 @@ class GalleryPage extends StatelessWidget {
                   const _Section(
                     title: 'cut here',
                     child: PaperCutRule(
-                      child: PaperNote(
-                        rotation: 0,
-                        child: Text('20% off your next print run'),
-                      ),
+                      child: _Slip(Text('20% off your next print run')),
                     ),
                   ),
                   _Section(
@@ -692,6 +687,41 @@ class _ShredderDemoState extends State<_ShredderDemo> {
           },
         ),
       ],
+    );
+  }
+}
+
+class _Slip extends StatelessWidget {
+  const _Slip(
+    this.child, {
+    this.width,
+    this.height,
+    this.padding = const EdgeInsets.all(14),
+  });
+
+  final Widget child;
+  final double? width;
+  final double? height;
+  final EdgeInsets padding;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      height: height,
+      padding: padding,
+      decoration: BoxDecoration(
+        color: PaperTheme.of(context).palette.sheet,
+        boxShadow: const [
+          BoxShadow(
+            color: Color(0x33000000),
+            blurRadius: 12,
+            spreadRadius: -6,
+            offset: Offset(0, 6),
+          ),
+        ],
+      ),
+      child: child,
     );
   }
 }

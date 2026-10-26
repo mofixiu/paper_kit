@@ -1,3 +1,10 @@
+## 0.2.1
+
+- `PaperHighlightSwitch` only highlights its label, not the whole row it sits in.
+- `PaperRedact` measures its text with the inherited text style, so the bars line up
+  with the words inside Material widgets.
+- New screenshots of the desk and office widgets, and an up-to-date README.
+
 ## 0.2.0
 
 - On the desk: `PaperEnvelope` (with a wax seal that cracks), `PaperShredder`,

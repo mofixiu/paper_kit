@@ -2,7 +2,7 @@ name: paper_kit
 description: >-
   A handmade-paper UI kit for Flutter: rubber stamps, tear-off tickets,
   printed receipts, peelable notes, paper planes and an iPhone frame.
-version: 0.2.0
+version: 0.2.1
 homepage: https://kit.mofiyinebo.com
 repository: https://github.com/mofixiu/paper_kit
 issue_tracker: https://github.com/mofixiu/paper_kit/issues
@@ -31,6 +31,10 @@ screenshots:
     path: doc/screenshots/gallery-light.png
   - description: The same gallery on espresso paper.
     path: doc/screenshots/gallery-dark.png
+  - description: An opened envelope, a typed letter and a wire-bound flip pad.
+    path: doc/screenshots/desk-light.png
+  - description: A highlighter switch, redacted text, a punch card, a paperclip and a cut line.
+    path: doc/screenshots/office-light.png
   - description: A torn ticket, a red-pen error, the paper ruler and an unfolded zine.
     path: doc/screenshots/components-light.png
   - description: PaperPhoneFrame showing a small to-do app built from the kit.

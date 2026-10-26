@@ -509,25 +509,33 @@ class _CoffeeCardState extends State<CoffeeCard> {
 }
 
 // #region paperclip
-Widget expenseReport() {
-  return const PaperClip(
-    attachment: PaperNote(rotation: 0, child: Text('receipt\n£12.40')),
-    child: SizedBox(
+Widget expenseReport(BuildContext context) {
+  final sheet = PaperTheme.of(context).palette.sheet;
+  return PaperClip(
+    attachment: Container(
+      color: sheet,
+      padding: const EdgeInsets.fromLTRB(40, 12, 14, 12),
+      child: const Text('receipt\n£12.40'),
+    ),
+    child: Container(
       width: 280,
       height: 170,
-      child: PaperNote(rotation: 0, child: Text('october expenses')),
+      color: sheet,
+      padding: const EdgeInsets.fromLTRB(130, 20, 20, 20),
+      child: const Text('october expenses'),
     ),
   );
 }
 // #endregion
 
 // #region cutrule
-Widget coupon() {
+Widget coupon(BuildContext context) {
   return PaperCutRule(
     onCut: () => debugPrint('coupon saved'),
-    child: const PaperNote(
-      rotation: 0,
-      child: Text('20% off your next print run'),
+    child: Container(
+      color: PaperTheme.of(context).palette.sheet,
+      padding: const EdgeInsets.all(20),
+      child: const Text('20% off your next print run'),
     ),
   );
 }

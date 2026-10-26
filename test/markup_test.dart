@@ -38,7 +38,10 @@ void main() {
       dark: dark,
     );
     expect(
-        tester.getSemantics(find.byType(PaperHighlightSwitch)),
+        tester.getSemantics(find.descendant(
+          of: find.byType(PaperHighlightSwitch),
+          matching: find.byType(GestureDetector),
+        )),
         matchesSemantics(
             isToggled: false,
             hasToggledState: true,

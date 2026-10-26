@@ -65,7 +65,10 @@ class PaperRedactState extends State<PaperRedact>
   @override
   Widget build(BuildContext context) {
     final theme = PaperTheme.of(context);
-    final style = theme.text(size: 16, height: 1.6).merge(widget.style);
+    final style = DefaultTextStyle.of(context)
+        .style
+        .merge(theme.text(size: 16, height: 1.6))
+        .merge(widget.style);
     return Semantics(
       button: true,
       label: isRedacted ? 'Redacted text. Tap to reveal.' : widget.text,

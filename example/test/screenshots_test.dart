@@ -19,6 +19,45 @@ Future<void> _loadFonts() async {
     montserrat.addFont(Future.value(ByteData.view(bytes.buffer)));
   }
   await montserrat.load();
+  const courier = '/System/Library/Fonts/Supplemental/Courier New.ttf';
+  if (File(courier).existsSync()) {
+    final bytes = File(courier).readAsBytesSync();
+    await (FontLoader(
+      'Courier Prime',
+    )..addFont(Future.value(ByteData.view(bytes.buffer)))).load();
+  }
+}
+
+Widget _slip(
+  bool dark,
+  Widget child, {
+  double? width,
+  double? height,
+  EdgeInsets padding = const EdgeInsets.all(14),
+}) {
+  return Container(
+    width: width,
+    height: height,
+    padding: padding,
+    decoration: BoxDecoration(
+      color: PaperPalette.of(dark ? Brightness.dark : Brightness.light).sheet,
+      boxShadow: const [
+        BoxShadow(
+          color: Color(0x33000000),
+          blurRadius: 12,
+          spreadRadius: -6,
+          offset: Offset(0, 6),
+        ),
+      ],
+    ),
+    child: child,
+  );
+}
+
+Future<void> _settle(WidgetTester tester, [int ms = 2400]) async {
+  for (var t = 0; t < ms; t += 16) {
+    await tester.pump(const Duration(milliseconds: 16));
+  }
 }
 
 Future<void> _capture(WidgetTester tester, Key key, String name) async {
@@ -61,6 +100,7 @@ Widget _scene(Key key, bool dark, Widget child) {
 
 void main() {
   setUpAll(() async {
+    PaperHaptics.enabled = false;
     if (!_skip) await _loadFonts();
   });
 
@@ -154,6 +194,123 @@ void main() {
       ticket.currentState!.tear();
       await tester.pumpAndSettle();
       await _capture(tester, key, 'components-$mode');
+    });
+
+    testWidgets('desk ($mode)', skip: _skip, (tester) async {
+      _phoneSized(tester);
+      const key = ValueKey('shot');
+      final envelope = GlobalKey<PaperEnvelopeState>();
+      final pad = GlobalKey<PaperFlipPadState>();
+      await tester.pumpWidget(
+        _scene(
+          key,
+          dark,
+          ListView(
+            padding: const EdgeInsets.fromLTRB(22, 20, 22, 20),
+            children: [
+              const PaperHeading('on the desk', size: 28),
+              const SizedBox(height: 14),
+              Center(
+                child: PaperEnvelope(
+                  key: envelope,
+                  width: 300,
+                  to: 'for tobi',
+                  letter: const Text(
+                    'dear tobi,\nthe zine swap is on saturday at 3pm.',
+                  ),
+                ),
+              ),
+              const SizedBox(height: 22),
+              const PaperTypewriter(
+                'dear hiring team,\nI build apps in Flutter, by hand.',
+                charDelay: Duration(milliseconds: 10),
+                seed: 26,
+              ),
+              const SizedBox(height: 26),
+              Center(
+                child: PaperFlipPad(
+                  key: pad,
+                  size: const Size(300, 170),
+                  pages: const [
+                    Text('monday\nscan the film'),
+                    Text('wednesday\nlay out the zine'),
+                    Text('friday\nprint run'),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+      envelope.currentState!.open();
+      pad.currentState!.next();
+      await _settle(tester);
+      await _capture(tester, key, 'desk-$mode');
+    });
+
+    testWidgets('office ($mode)', skip: _skip, (tester) async {
+      _phoneSized(tester);
+      const key = ValueKey('shot');
+      await tester.pumpWidget(
+        _scene(
+          key,
+          dark,
+          ListView(
+            padding: const EdgeInsets.fromLTRB(22, 20, 22, 20),
+            children: [
+              const PaperHeading('in the office', size: 28),
+              const SizedBox(height: 20),
+              PaperHighlightSwitch(
+                label: 'remind me on friday',
+                value: true,
+                onChanged: (_) {},
+              ),
+              PaperHighlightSwitch(
+                label: 'print on recycled paper',
+                value: false,
+                onChanged: (_) {},
+              ),
+              const SizedBox(height: 18),
+              const PaperRedact(
+                'the spare key is under the third plant pot, not the doormat.',
+              ),
+              const SizedBox(height: 26),
+              Center(
+                child: PaperPunchCard(
+                  title: 'the paper room · coffee',
+                  holes: 10,
+                  punched: 7,
+                  width: 320,
+                  onPunch: (_) {},
+                ),
+              ),
+              const SizedBox(height: 40),
+              Center(
+                child: PaperClip(
+                  attachment: _slip(
+                    dark,
+                    const Text('receipt\n£12.40'),
+                    padding: const EdgeInsets.fromLTRB(40, 14, 16, 14),
+                  ),
+                  child: _slip(
+                    dark,
+                    const Text('october expenses'),
+                    width: 300,
+                    height: 150,
+                    padding: const EdgeInsets.fromLTRB(130, 20, 20, 20),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              PaperCutRule(
+                child: _slip(dark, const Text('20% off your next print run')),
+              ),
+            ],
+          ),
+        ),
+      );
+      await _settle(tester, 1200);
+      await _capture(tester, key, 'office-$mode');
     });
 
     testWidgets('phone ($mode)', skip: _skip, (tester) async {

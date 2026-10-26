@@ -67,7 +67,7 @@ class _PaperHighlightSwitchState extends State<PaperHighlightSwitch>
     final p = theme.palette;
     final ink = widget.ink ??
         (p.isDark ? const Color(0xFFD9BC3F) : const Color(0xFFF2CF3A));
-    return Semantics(
+    final semantics = Semantics(
       toggled: widget.value,
       button: true,
       label: widget.label,
@@ -93,6 +93,12 @@ class _PaperHighlightSwitchState extends State<PaperHighlightSwitch>
           ),
         ),
       ),
+    );
+    return Align(
+      alignment: AlignmentDirectional.centerStart,
+      widthFactor: 1,
+      heightFactor: 1,
+      child: semantics,
     );
   }
 }
