@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/widgets.dart';
 
+import 'haptics.dart';
 import 'motion.dart';
 import 'theme.dart';
 
@@ -56,6 +57,7 @@ class PaperEnvelopeState extends State<PaperEnvelope>
 
   /// Cracks the seal and takes the letter out.
   Future<void> open() async {
+    if (_controller.value == 0) PaperHaptics.crack();
     await _controller.forward();
     if (mounted) widget.onOpened?.call();
   }

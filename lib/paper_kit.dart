@@ -4,7 +4,9 @@
 /// [PaperStampButton], [PaperCheckbox], [PaperTextField], [PaperIndexTabs],
 /// [PaperTearToConfirm], [PaperReceipt], [PaperPlaneButton], [PaperPeel],
 /// [PaperZine], [PaperNote], [PaperRuler], [PaperEnvelope], [PaperShredder],
-/// [PaperTypewriter], [PaperFlipPad] and [PaperPhoneFrame].
+/// [PaperTypewriter], [PaperFlipPad], [PaperHighlightSwitch], [PaperRedact],
+/// [PaperPunchCard], [PaperClip], [PaperCutRule] and [PaperPhoneFrame], with
+/// [PaperHaptics] to make them feel like paper.
 library;
 
 import 'src/checkbox.dart';
@@ -24,20 +26,26 @@ import 'src/zine.dart';
 
 export 'src/background.dart';
 export 'src/checkbox.dart';
+export 'src/cut_rule.dart';
 export 'src/demo.dart';
 export 'src/envelope.dart';
 export 'src/fade_up.dart';
 export 'src/flip_pad.dart';
+export 'src/haptics.dart';
 export 'src/heading.dart';
+export 'src/highlight_switch.dart';
 export 'src/index_tabs.dart';
 export 'src/ink_reveal.dart' show PaperInkReveal;
 export 'src/motion.dart';
 export 'src/note.dart';
 export 'src/palette.dart';
+export 'src/paperclip.dart';
 export 'src/peel.dart' show PaperPeel, PaperPeelState;
 export 'src/phone_frame.dart';
 export 'src/plane_button.dart';
+export 'src/punch_card.dart';
 export 'src/receipt.dart';
+export 'src/redact.dart';
 export 'src/ruler.dart';
 export 'src/shredder.dart';
 export 'src/stamp.dart';

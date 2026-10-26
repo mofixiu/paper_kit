@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'haptics.dart';
 import 'theme.dart';
 
 /// A slider drawn as a paper ruler. Drag or tap along it; the ink caret snaps to
@@ -87,7 +88,7 @@ class _PaperRulerState extends State<PaperRuler>
   void _set(double value) {
     final snapped = _snap(value);
     if ((snapped - widget.value).abs() > 1e-9) {
-      HapticFeedback.selectionClick();
+      PaperHaptics.snip();
       widget.onChanged(snapped);
     }
   }

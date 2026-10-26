@@ -117,6 +117,12 @@ class _NotebookAppState extends State<NotebookApp> {
 | `PaperShredder` | Feeds what it holds into a strip-cut shredder; the strips curl apart and fall. |
 | `PaperTypewriter` | Types text a key at a time, each letter a little off the line and unevenly inked. |
 | `PaperFlipPad` | A wire-bound pad whose pages flip up over the rings, like a desk calendar. |
+| `PaperHighlightSwitch` | A switch that drags a streaky highlighter across its label. |
+| `PaperRedact` | Text blacked out with a marker, line by line, until you tap it. |
+| `PaperPunchCard` | A loyalty card: each tap punches a real hole and the disc tumbles out. |
+| `PaperClip` | A slip held to a card with a wire paperclip; tap to slide it out. |
+| `PaperCutRule` | A dashed "cut here" line; drag the scissors along it and the coupon comes away. |
+| `PaperHaptics` | Haptic patterns that feel like paper: stamp, tear, punch, flip, snip and more. |
 | `PaperPhoneFrame` | An iPhone drawn in code, to show an app on a page. |
 | `PaperFingertip`, `PaperDemoController`, `PaperDemoScript`, `PaperDemoStep` | A scripted fingertip that taps and drags the real widgets on screen, and stops when someone touches it. |
 | `PaperFadeUpRoute`, `PaperFadeUpTransition` | The kit's screen transition: fade in while rising 1.8%. |

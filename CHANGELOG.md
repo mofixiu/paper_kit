@@ -1,3 +1,14 @@
+## 0.2.0
+
+- On the desk: `PaperEnvelope` (with a wax seal that cracks), `PaperShredder`,
+  `PaperTypewriter` and `PaperFlipPad`.
+- Marking up: `PaperHighlightSwitch`, a switch drawn with a highlighter, and
+  `PaperRedact`, text blacked out with a marker until you tap it.
+- `PaperPunchCard`, a loyalty card whose holes are really cut, `PaperClip`, a slip held on
+  with a wire paperclip, and `PaperCutRule`, a dashed line you cut with scissors.
+- `PaperHaptics`: haptic patterns for paper (stamp, tear, punch, flip, snip, clip, crack,
+  stroke, crinkle). The kit's widgets now use them.
+
 ## 0.1.0
 
 First release.
@@ -10,8 +21,6 @@ First release.
   `PaperCheckbox`, `PaperTextField`, `PaperIndexTabs`, `PaperTearToConfirm`,
   `PaperReceipt`, `PaperPlaneButton`, `PaperPeel`, `PaperZine`, `PaperNote` and
   `PaperRuler`.
-- On the desk: `PaperEnvelope` (with a wax seal), `PaperShredder`, `PaperTypewriter` and
-  `PaperFlipPad`.
 - `PaperPhoneFrame`, `PaperFingertip`, `PaperDemoController` and `PaperDemoScript` for
   showing an app in an iPhone with a scripted fingertip that taps the real widgets.
 - `PaperFadeUpRoute` and `PaperFadeUpTransition`.

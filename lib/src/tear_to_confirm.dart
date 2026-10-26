@@ -1,8 +1,8 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
+import 'haptics.dart';
 import 'stamp.dart';
 import 'theme.dart';
 
@@ -122,7 +122,7 @@ class PaperTearToConfirmState extends State<PaperTearToConfirm>
 
   Future<void> _tearNow() async {
     setState(() => _torn = true);
-    HapticFeedback.mediumImpact();
+    PaperHaptics.tear();
     await _fall.forward(from: 0);
     if (!mounted) return;
     _stamp.forward(from: 0);

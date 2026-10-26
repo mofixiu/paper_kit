@@ -217,6 +217,62 @@ class GalleryPage extends StatelessWidget {
                   ),
                   const _Section(title: 'shredder', child: _ShredderDemo()),
                   _Section(
+                    title: 'marking up',
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        PaperHighlightSwitch(
+                          label: 'remind me on friday',
+                          value: true,
+                          onChanged: (_) {},
+                        ),
+                        const SizedBox(height: 16),
+                        const PaperRedact(
+                          'the spare key is under the third plant pot.',
+                        ),
+                      ],
+                    ),
+                  ),
+                  _Section(
+                    title: 'punch card',
+                    child: Center(
+                      child: PaperPunchCard(
+                        title: 'coffee',
+                        holes: 10,
+                        punched: 3,
+                        onPunch: (_) {},
+                      ),
+                    ),
+                  ),
+                  const _Section(
+                    title: 'paperclip',
+                    child: Center(
+                      child: PaperClip(
+                        attachment: PaperNote(
+                          rotation: 0,
+                          child: Text('receipt'),
+                        ),
+                        child: SizedBox(
+                          width: 260,
+                          height: 150,
+                          child: PaperNote(
+                            rotation: 0,
+                            child: Text('october expenses'),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const _Section(
+                    title: 'cut here',
+                    child: PaperCutRule(
+                      child: PaperNote(
+                        rotation: 0,
+                        child: Text('20% off your next print run'),
+                      ),
+                    ),
+                  ),
+                  _Section(
                     title: 'phone frame',
                     child: Center(child: PhoneDemo(autoplay: autoplay)),
                   ),

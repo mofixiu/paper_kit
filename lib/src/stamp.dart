@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/widgets.dart';
 
+import 'haptics.dart';
 import 'internal/pressable.dart';
 import 'internal/rough.dart';
 import 'theme.dart';
@@ -243,6 +244,7 @@ class _PaperStampButtonState extends State<PaperStampButton>
       setState(() => _impressions.remove(impression));
       controller.dispose();
     });
+    PaperHaptics.stamp();
     widget.onPressed();
   }
 

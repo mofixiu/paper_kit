@@ -460,3 +460,108 @@ Widget deskCalendar() {
 }
 
 // #endregion
+
+class ReminderSetting extends StatefulWidget {
+  const ReminderSetting({super.key});
+
+  @override
+  State<ReminderSetting> createState() => _ReminderSettingState();
+}
+
+class _ReminderSettingState extends State<ReminderSetting> {
+  // #region highlight
+  bool _remind = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return PaperHighlightSwitch(
+      label: 'remind me on friday',
+      value: _remind,
+      onChanged: (value) => setState(() => _remind = value),
+    );
+  }
+
+  // #endregion
+}
+
+// #region redact
+Widget secret() {
+  return const SizedBox(
+    width: 320,
+    // Tap to lift the marker off; tap again to black it out.
+    child: PaperRedact(
+      'the spare key is under the third plant pot, not the doormat.',
+    ),
+  );
+}
+// #endregion
+
+class CoffeeCard extends StatefulWidget {
+  const CoffeeCard({super.key});
+
+  @override
+  State<CoffeeCard> createState() => _CoffeeCardState();
+}
+
+class _CoffeeCardState extends State<CoffeeCard> {
+  // #region punchcard
+  int _cups = 3;
+
+  @override
+  Widget build(BuildContext context) {
+    return PaperPunchCard(
+      title: 'the paper room · coffee',
+      holes: 10,
+      punched: _cups,
+      reward: 'free one',
+      onPunch: (cups) => setState(() => _cups = cups),
+    );
+  }
+
+  // #endregion
+}
+
+// #region paperclip
+Widget expenseReport() {
+  return const PaperClip(
+    // Tap to slide the receipt out; tap again to clip it back.
+    attachment: PaperNote(rotation: 0, child: Text('receipt\n£12.40')),
+    child: SizedBox(
+      width: 280,
+      height: 170,
+      child: PaperNote(rotation: 0, child: Text('october expenses')),
+    ),
+  );
+}
+// #endregion
+
+// #region cutrule
+Widget coupon() {
+  return PaperCutRule(
+    onCut: () => debugPrint('coupon saved'),
+    child: const PaperNote(
+      rotation: 0,
+      child: Text('20% off your next print run'),
+    ),
+  );
+}
+// #endregion
+
+// #region haptics
+Widget hapticStamp() {
+  return PaperStampButton(
+    label: 'approved',
+    // The kit's widgets already play their own pattern; use them in yours too.
+    onPressed: () {},
+  );
+}
+
+void onCardPunched() {
+  PaperHaptics.punch(); // one heavy thud
+}
+
+void onPageTorn() {
+  PaperHaptics.tear(); // a run of clicks along the perforation
+}
+
+// #endregion

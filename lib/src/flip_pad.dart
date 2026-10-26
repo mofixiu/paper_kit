@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/widgets.dart';
 
+import 'haptics.dart';
 import 'theme.dart';
 
 /// A wire-bound pad, like a desk calendar. Tap or swipe up and the page flips
@@ -43,6 +44,7 @@ class PaperFlipPadState extends State<PaperFlipPad>
   /// Flips the top page over. On the last page it does nothing.
   Future<void> next() async {
     if (_flip.isAnimating || _page >= widget.pages.length - 1) return;
+    PaperHaptics.flip();
     await _flip.forward(from: 0);
     setState(() => _page++);
     _flip.value = 0;
@@ -52,6 +54,7 @@ class PaperFlipPadState extends State<PaperFlipPad>
   /// Brings the page before back over the rings.
   Future<void> previous() async {
     if (_flip.isAnimating || _page == 0) return;
+    PaperHaptics.flip();
     setState(() => _page--);
     await _flip.reverse(from: 1);
     widget.onPageChanged?.call(_page);
