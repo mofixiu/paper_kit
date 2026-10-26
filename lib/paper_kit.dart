@@ -3,7 +3,8 @@
 /// Wrap your app in [PaperTheme] (or [PaperInkReveal]) and use the widgets:
 /// [PaperStampButton], [PaperCheckbox], [PaperTextField], [PaperIndexTabs],
 /// [PaperTearToConfirm], [PaperReceipt], [PaperPlaneButton], [PaperPeel],
-/// [PaperZine], [PaperNote], [PaperRuler] and [PaperPhoneFrame].
+/// [PaperZine], [PaperNote], [PaperRuler], [PaperEnvelope], [PaperShredder],
+/// [PaperTypewriter], [PaperFlipPad] and [PaperPhoneFrame].
 library;
 
 import 'src/checkbox.dart';
@@ -24,7 +25,9 @@ import 'src/zine.dart';
 export 'src/background.dart';
 export 'src/checkbox.dart';
 export 'src/demo.dart';
+export 'src/envelope.dart';
 export 'src/fade_up.dart';
+export 'src/flip_pad.dart';
 export 'src/heading.dart';
 export 'src/index_tabs.dart';
 export 'src/ink_reveal.dart' show PaperInkReveal;
@@ -36,9 +39,11 @@ export 'src/phone_frame.dart';
 export 'src/plane_button.dart';
 export 'src/receipt.dart';
 export 'src/ruler.dart';
+export 'src/shredder.dart';
 export 'src/stamp.dart';
 export 'src/tear_to_confirm.dart';
 export 'src/text_field.dart';
 export 'src/theme.dart';
 export 'src/theme_toggle.dart';
+export 'src/typewriter.dart';
 export 'src/zine.dart';

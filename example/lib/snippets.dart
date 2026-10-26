@@ -386,3 +386,77 @@ class _PhoneDemoSnippetState extends State<PhoneDemoSnippet> {
     super.dispose();
   }
 }
+
+// #region envelope
+Widget invitation() {
+  return PaperEnvelope(
+    to: 'for tobi',
+    // Tap to crack the seal; tap again to put the letter back.
+    letter: const Text(
+      'dear tobi,\n'
+      'the zine swap is on saturday at 3pm.\n'
+      'bring something you made.',
+    ),
+    onOpened: () => debugPrint('read'),
+  );
+}
+// #endregion
+
+class DraftCard extends StatefulWidget {
+  const DraftCard({super.key});
+
+  @override
+  State<DraftCard> createState() => _DraftCardState();
+}
+
+class _DraftCardState extends State<DraftCard> {
+  // #region shredder
+  final _shredder = GlobalKey<PaperShredderState>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        PaperShredder(
+          key: _shredder,
+          strips: 16,
+          onShredded: () => debugPrint('draft deleted'),
+          child: const PaperNote(child: Text('first draft, do not read')),
+        ),
+        TextButton(
+          onPressed: () => _shredder.currentState!.shred(),
+          child: const Text('shred it'),
+        ),
+      ],
+    );
+  }
+
+  // #endregion
+}
+
+// #region typewriter
+Widget coverLetter() {
+  return const PaperTypewriter(
+    'dear hiring team,\n'
+    'I build apps in Flutter, by hand.',
+    charDelay: Duration(milliseconds: 60),
+    seed: 26, // the same wobble every time
+  );
+}
+// #endregion
+
+// #region flippad
+Widget deskCalendar() {
+  return PaperFlipPad(
+    size: const Size(280, 180),
+    onPageChanged: (page) => debugPrint('now on $page'),
+    // Tap or swipe up to flip; swipe down to go back.
+    pages: const [
+      Text('monday\nscan the film'),
+      Text('wednesday\nlay out the zine'),
+      Text('friday\nprint run'),
+    ],
+  );
+}
+
+// #endregion

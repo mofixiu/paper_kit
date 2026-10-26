@@ -187,6 +187,35 @@ class GalleryPage extends StatelessWidget {
                     ),
                   ),
                   const _Section(title: 'ruler', child: _RulerDemo()),
+                  const _Section(
+                    title: 'envelope',
+                    child: Center(
+                      child: PaperEnvelope(
+                        to: 'for tobi',
+                        letter: Text('the zine swap is on saturday at 3pm.'),
+                      ),
+                    ),
+                  ),
+                  const _Section(
+                    title: 'typewriter',
+                    child: PaperTypewriter(
+                      'dear tobi,\nbring something you made.',
+                      autostart: false,
+                    ),
+                  ),
+                  const _Section(
+                    title: 'flip pad',
+                    child: Center(
+                      child: PaperFlipPad(
+                        pages: [
+                          Text('monday\nscan the film'),
+                          Text('wednesday\nlay out the zine'),
+                          Text('friday\nprint run'),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const _Section(title: 'shredder', child: _ShredderDemo()),
                   _Section(
                     title: 'phone frame',
                     child: Center(child: PhoneDemo(autoplay: autoplay)),
@@ -571,6 +600,40 @@ class _RulerDemoState extends State<_RulerDemo> {
         Text(
           'sleep: $_hours hours',
           style: theme.text(size: 13, color: theme.palette.muted),
+        ),
+      ],
+    );
+  }
+}
+
+class _ShredderDemo extends StatefulWidget {
+  const _ShredderDemo();
+
+  @override
+  State<_ShredderDemo> createState() => _ShredderDemoState();
+}
+
+class _ShredderDemoState extends State<_ShredderDemo> {
+  final _shredder = GlobalKey<PaperShredderState>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        PaperShredder(
+          key: _shredder,
+          child: const SizedBox(
+            width: 240,
+            child: PaperNote(child: Text('first draft, do not read')),
+          ),
+        ),
+        const SizedBox(height: 120),
+        PaperStampButton(
+          label: 'shred',
+          onPressed: () {
+            final shredder = _shredder.currentState!;
+            shredder.isShredded ? shredder.reset() : shredder.shred();
+          },
         ),
       ],
     );

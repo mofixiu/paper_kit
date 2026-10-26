@@ -113,6 +113,10 @@ class _NotebookAppState extends State<NotebookApp> {
 | `PaperZine` | A concertina-folded list whose panels unfold one by one. |
 | `PaperNote` | A card held on with washi tape, a little crooked. |
 | `PaperRuler` | A slider drawn as a paper ruler, snapping to its marks. |
+| `PaperEnvelope` | A sealed envelope: tap to crack the wax, swing the flap open and slide the letter out. |
+| `PaperShredder` | Feeds what it holds into a strip-cut shredder; the strips curl apart and fall. |
+| `PaperTypewriter` | Types text a key at a time, each letter a little off the line and unevenly inked. |
+| `PaperFlipPad` | A wire-bound pad whose pages flip up over the rings, like a desk calendar. |
 | `PaperPhoneFrame` | An iPhone drawn in code, to show an app on a page. |
 | `PaperFingertip`, `PaperDemoController`, `PaperDemoScript`, `PaperDemoStep` | A scripted fingertip that taps and drags the real widgets on screen, and stops when someone touches it. |
 | `PaperFadeUpRoute`, `PaperFadeUpTransition` | The kit's screen transition: fade in while rising 1.8%. |

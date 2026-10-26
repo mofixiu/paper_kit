@@ -10,6 +10,8 @@ First release.
   `PaperCheckbox`, `PaperTextField`, `PaperIndexTabs`, `PaperTearToConfirm`,
   `PaperReceipt`, `PaperPlaneButton`, `PaperPeel`, `PaperZine`, `PaperNote` and
   `PaperRuler`.
+- On the desk: `PaperEnvelope` (with a wax seal), `PaperShredder`, `PaperTypewriter` and
+  `PaperFlipPad`.
 - `PaperPhoneFrame`, `PaperFingertip`, `PaperDemoController` and `PaperDemoScript` for
   showing an app in an iPhone with a scripted fingertip that taps the real widgets.
 - `PaperFadeUpRoute` and `PaperFadeUpTransition`.
