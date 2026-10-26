@@ -90,10 +90,22 @@ class _GrainPainter extends CustomPainter {
           TileMode.repeated,
           TileMode.repeated,
           Float64List.fromList([
-            scale, 0, 0, 0, //
-            0, scale, 0, 0, //
-            0, 0, 1, 0, //
-            0, 0, 0, 1, //
+            scale,
+            0,
+            0,
+            0,
+            0,
+            scale,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
           ]),
         ),
     );
@@ -135,7 +147,6 @@ class _GrainTile {
     final speckDark = dark ? black : const Color(0xFF3A2F22);
     final fibre = dark ? white : const Color(0xFF5A4A36);
 
-    // Draws each mark at the nine positions around the tile so the edges wrap.
     void wrapped(void Function(Offset shift) draw) {
       for (var x = -1; x <= 1; x++) {
         for (var y = -1; y <= 1; y++) {
@@ -146,7 +157,6 @@ class _GrainTile {
 
     double between(double a, double b) => a + random.nextDouble() * (b - a);
 
-    // Soft mottling.
     for (var i = 0; i < 16; i++) {
       final centre = Offset(between(0, size), between(0, size));
       final radius = between(18, 64);
@@ -166,7 +176,6 @@ class _GrainTile {
       });
     }
 
-    // Fibres: short curved hairs.
     for (var i = 0; i < 110; i++) {
       final start = Offset(between(0, size), between(0, size));
       final angle = between(0, math.pi * 2);
@@ -194,7 +203,6 @@ class _GrainTile {
       });
     }
 
-    // Specks.
     for (var i = 0; i < 1500; i++) {
       final centre = Offset(between(0, size), between(0, size));
       final radius = between(0.22, 0.85);

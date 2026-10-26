@@ -239,7 +239,6 @@ class PaperEnvelopeState extends State<PaperEnvelope>
   }
 }
 
-// The front of the envelope: the sides and bottom folded in, meeting under the flap.
 class _PocketPainter extends CustomPainter {
   _PocketPainter({
     required this.paper,
@@ -255,7 +254,6 @@ class _PocketPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final w = size.width;
     final h = size.height;
-    // The folds meet a little above the flap's tip, so the flap covers the seam.
     final meet = Offset(w / 2, h * (flapDepth - 0.06));
     final pocket = Path()
       ..moveTo(0, 0)
@@ -308,7 +306,6 @@ class _FlapPainter extends CustomPainter {
     canvas.drawShadow(flap, const Color(0xFF000000), 2, false);
     canvas.drawPath(flap, Paint()..color = showInside ? inside : outside);
     if (showInside) {
-      // A printed liner on the inside, the way good envelopes have.
       canvas.save();
       canvas.clipPath(flap);
       final liner = Paint()
@@ -330,8 +327,6 @@ class _FlapPainter extends CustomPainter {
       old.shade != shade;
 }
 
-// A blob of wax with a pressed heart. Cracking splits it in two halves that
-// fall away from each other.
 class _SealPainter extends CustomPainter {
   _SealPainter({required this.wax, required this.crack});
 
@@ -371,7 +366,6 @@ class _SealPainter extends CustomPainter {
         ..style = PaintingStyle.stroke
         ..strokeWidth = r * 0.08,
     );
-    // The pressed heart: darker inside, a highlight along its upper edge.
     final s = r * 0.34;
     final heart = Path()
       ..moveTo(c.dx, c.dy + s * 0.9)

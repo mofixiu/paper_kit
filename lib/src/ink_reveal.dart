@@ -66,7 +66,6 @@ class _PaperInkRevealState extends State<PaperInkReveal>
       return;
     }
     if (_waiting) return;
-    // Paint one more frame in the old colours, photograph it, then switch underneath.
     _waiting = true;
     WidgetsBinding.instance.addPostFrameCallback((_) => _startInk());
   }
@@ -83,7 +82,6 @@ class _PaperInkRevealState extends State<PaperInkReveal>
           pixelRatio: MediaQuery.maybeDevicePixelRatioOf(context) ?? 1,
         );
       } catch (_) {
-        // Not ready to be photographed: switch without the ink.
         snapshot = null;
       }
     }
@@ -213,7 +211,6 @@ Path inkBlot(Offset centre, double radius, int seed) {
     final r = radius * (1 + wobble);
     points.add(centre + Offset(math.cos(angle), math.sin(angle)) * r);
   }
-  // A smooth closed curve through the midpoints.
   final first = Offset.lerp(points.last, points.first, 0.5)!;
   path.moveTo(first.dx, first.dy);
   for (var i = 0; i < count; i++) {

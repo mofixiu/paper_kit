@@ -48,7 +48,6 @@ void main() {
     final before = tester.getSize(find.byType(PaperShredder));
     shredder.currentState!.shred();
     await pumpFrames(tester, const Duration(milliseconds: 1000));
-    // One piece above the slot and eight strips below, all the same page.
     expect(find.text('draft'), findsNWidgets(9));
     expect(tester.getSize(find.byType(PaperShredder)), before);
     await pumpFrames(tester, const Duration(milliseconds: 1100));
@@ -100,7 +99,6 @@ void main() {
     await tester.fling(find.byType(PaperFlipPad), const Offset(0, -120), 800);
     await pumpFrames(tester, const Duration(milliseconds: 800));
     expect(pad.currentState!.page, 2);
-    // Already on the last page: nothing happens.
     await tester.tap(find.byType(PaperFlipPad));
     await pumpFrames(tester, const Duration(milliseconds: 800));
     expect(pad.currentState!.page, 2);

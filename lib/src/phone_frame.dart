@@ -73,7 +73,6 @@ class PaperPhoneFrame extends StatelessWidget {
       viewInsets: EdgeInsets.zero,
     );
 
-    // Scales down, never squashes, when there isn't room for the whole phone.
     return FittedBox(
       fit: BoxFit.scaleDown,
       child: SizedBox(
@@ -297,7 +296,6 @@ class _StatusIconsPainter extends CustomPainter {
     canvas.save();
     canvas.scale(s);
 
-    // Signal bars.
     for (final (x, y, h) in const [
       (0.0, 8.0, 4.0),
       (5.0, 5.5, 6.5),
@@ -313,7 +311,6 @@ class _StatusIconsPainter extends CustomPainter {
       );
     }
 
-    // Wi-Fi.
     canvas.translate(18 + gap / s, 0);
     final arc = Paint()
       ..style = PaintingStyle.stroke
@@ -338,7 +335,6 @@ class _StatusIconsPainter extends CustomPainter {
       fill,
     );
 
-    // Battery.
     canvas.translate(16 + gap / s, 0);
     canvas
       ..drawRRect(

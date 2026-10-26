@@ -127,7 +127,6 @@ void main() {
     expect(taps, 1);
     expect(controller.visible, isTrue);
 
-    // A real touch on the screen stops the demo.
     await tester.tapAt(
         tester.getCenter(find.byType(PaperPhoneFrame)) + const Offset(0, 150));
     await tester.pump();

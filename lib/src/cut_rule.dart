@@ -48,7 +48,6 @@ class PaperCutRuleState extends State<PaperCutRule>
   bool get isCut => _away.value > 0;
 
   void _snip() {
-    // One snip every 18px of travel.
     final snips = (_cut.value * _width / 18).floor();
     if (snips != _snips) {
       _snips = snips;
@@ -180,7 +179,6 @@ class _RulePainter extends CustomPainter {
     final line = Paint()
       ..color = dash
       ..strokeWidth = 1.4;
-    // Still to cut: dashes. Already cut: a thin ragged gap.
     for (var d = x; d < size.width; d += 9) {
       canvas.drawLine(
           Offset(d, y), Offset(math.min(d + 5, size.width), y), line);
@@ -203,7 +201,6 @@ class _RulePainter extends CustomPainter {
     if (visible) _scissors(canvas, Offset(x, y), (x / 9) % 2 < 1 ? 0.32 : 0.08);
   }
 
-  // Two blades on a pivot, opening and closing as they travel.
   void _scissors(Canvas canvas, Offset at, double open) {
     final stroke = Paint()
       ..color = ink

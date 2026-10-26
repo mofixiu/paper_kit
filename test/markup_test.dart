@@ -154,7 +154,6 @@ void main() {
       ),
       dark: dark,
     );
-    // A short drag only cuts part of the way.
     await tester.drag(find.byType(CustomPaint).last, const Offset(80, 0));
     await pumpFrames(tester, const Duration(milliseconds: 100));
     expect(rule.currentState!.isCut, isFalse);
@@ -172,7 +171,6 @@ void main() {
   testWidgets('haptics play the patterns, and can be turned off',
       (tester) async {
     final haptics = recordHaptics(tester);
-    // The patterns wait between taps on real timers.
     await tester.runAsync(PaperHaptics.stamp);
     expect(haptics,
         ['HapticFeedbackType.heavyImpact', 'HapticFeedbackType.lightImpact']);

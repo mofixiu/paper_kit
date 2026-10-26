@@ -371,7 +371,6 @@ class _NotePainter extends CustomPainter {
         false,
       )
       ..drawPath(path, Paint()..color = color);
-    // A slightly darker band at the top, where the glue is.
     canvas
       ..save()
       ..clipPath(path)
@@ -422,7 +421,6 @@ class _FlapPainter extends CustomPainter {
       4,
       false,
     );
-    // Shade from the tip (lightest) toward the fold (darkest).
     final foldPoint = _closestOnLine(tip, foldA, foldB);
     canvas.drawPath(
       path,

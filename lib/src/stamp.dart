@@ -130,7 +130,6 @@ class _ImpressionPainter extends CustomPainter {
     );
     painter.dispose();
 
-    // Where the ink didn't take: specks, a few scratches and one faint patch.
     final random = math.Random(seed * 977 + 13);
     final gap = Paint()..blendMode = BlendMode.dstOut;
     for (var i = 0; i < (size.width * size.height / 70).round(); i++) {

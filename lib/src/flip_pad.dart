@@ -129,14 +129,12 @@ class PaperFlipPadState extends State<PaperFlipPad>
               final t = Curves.easeInOutCubic.transform(_flip.value);
               final angle = t * math.pi;
               final flipping = _flip.value > 0;
-              // Flipping either way, the page underneath is the next one.
               final under = _page + 1;
               final onTop = _page;
               final shown = angle <= math.pi / 2;
               return Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  // The cardboard back and the stack of pages beneath.
                   Positioned(
                     left: 0,
                     top: binding,
@@ -166,7 +164,6 @@ class PaperFlipPadState extends State<PaperFlipPad>
                       child: Stack(
                         children: [
                           sheet(under),
-                          // The turning page's shadow sweeping off this one.
                           if (flipping)
                             Positioned.fill(
                               child: IgnorePointer(
@@ -259,7 +256,6 @@ class _RulePainter extends CustomPainter {
   bool shouldRepaint(_RulePainter old) => old.color != color;
 }
 
-// Twin-loop wire binding: a punched hole in the page under each loop.
 class _BindingPainter extends CustomPainter {
   _BindingPainter({required this.wire, required this.hole});
 

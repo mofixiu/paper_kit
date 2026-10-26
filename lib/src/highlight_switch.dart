@@ -81,7 +81,6 @@ class _PaperHighlightSwitchState extends State<PaperHighlightSwitch>
               progress: _stroke,
               ink: ink,
               strength: p.isDark ? 0.34 : 0.62,
-              // Multiply on cream, the way ink sinks into paper; it would vanish on dark.
               blend: p.isDark ? BlendMode.srcOver : BlendMode.multiply,
               seed: widget.label.length,
             ),
@@ -121,7 +120,6 @@ class _MarkerPainter extends CustomPainter {
     final top = size.height * 0.24;
     final bottom = size.height * 0.98;
     final end = -4 + (size.width + 10) * t;
-    // A chisel tip: slanted ends, edges that wander a little.
     final band = Path()..moveTo(-2, top + 2);
     for (var x = 4.0; x < end; x += 9) {
       band.lineTo(x, top + random.nextDouble() * 2.2);
@@ -141,7 +139,6 @@ class _MarkerPainter extends CustomPainter {
         ..color = ink.withValues(alpha: strength)
         ..blendMode = blend,
     );
-    // Streaks where the felt tip ran drier.
     final streak = Paint()
       ..color = ink.withValues(alpha: strength * 0.5)
       ..strokeWidth = 1.2

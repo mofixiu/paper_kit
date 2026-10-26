@@ -125,7 +125,6 @@ void main() {
       dark: dark,
     );
     final rect = tester.getRect(find.byType(PaperRuler));
-    // The usable length is 300 (14 px inset at each end); 7.2 snaps to 7.
     await tester.tapAt(Offset(rect.left + 14 + 300 * 0.72, rect.center.dy));
     await tester.pumpAndSettle();
     expect(value, 7);

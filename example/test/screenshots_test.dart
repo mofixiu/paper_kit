@@ -1,5 +1,3 @@
-// Renders the screenshots in ../doc/screenshots. Skipped unless asked for:
-//   PAPER_KIT_SCREENSHOTS=1 flutter test test/screenshots_test.dart
 import 'dart:io';
 import 'dart:ui' as ui;
 

@@ -147,7 +147,6 @@ class PaperTypewriterState extends State<PaperTypewriter>
   }
 }
 
-// Keys grouped into words, so a line only ever wraps at a space.
 Iterable<InlineSpan> _words(Iterable<_Strike> strikes, TextStyle style) sync* {
   var word = <_Strike>[];
   Widget build(List<_Strike> keys) => Row(

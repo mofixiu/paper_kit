@@ -1,4 +1,3 @@
-# Fonts used only to render the screenshots; Montserrat isn't shipped with the package.
 example/test/fonts/
 example/build/
 example/.dart_tool/

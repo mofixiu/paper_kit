@@ -114,7 +114,6 @@ class _TapePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // Short edges torn into small teeth.
     final random = math.Random(5);
     final path = Path()..moveTo(0, 0);
     path.lineTo(size.width, 0);

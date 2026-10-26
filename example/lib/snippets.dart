@@ -1,5 +1,3 @@
-// Short usage examples for every paper_kit widget. kit.mofiyinebo.com shows the
-// code between each `#region` and `#endregion`; the analyzer checks all of it.
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:paper_kit/paper_kit.dart';
@@ -46,7 +44,7 @@ Widget sectionTitles() {
   return const Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      PaperHeading('Work experience'), // shown as "work experience"
+      PaperHeading('Work experience'),
       SizedBox(height: 24),
       PaperHeading('projects', size: 22),
     ],
@@ -67,7 +65,6 @@ class _ThemeSwitchState extends State<ThemeSwitch> {
 
   @override
   Widget build(BuildContext context) {
-    // Reads "dark" while the page is light, and "light" while it's dark.
     return PaperThemeToggle(
       isDark: _dark,
       onChanged: (dark) => setState(() => _dark = dark),
@@ -92,7 +89,6 @@ class _InkyAppState extends State<InkyApp> {
   Widget build(BuildContext context) {
     final paper = _dark ? PaperThemeData.dark() : PaperThemeData.light();
     return MaterialApp(
-      // The new palette spreads over the old one like ink.
       builder: (context, child) => PaperInkReveal(theme: paper, child: child!),
       home: Scaffold(
         body: Center(
@@ -116,7 +112,6 @@ class ApproveInvoice extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Every press leaves a red "approved" impression that slowly fades.
     return PaperStampButton(label: 'Approved', onPressed: onApproved);
   }
 }
@@ -140,7 +135,7 @@ class _TodayListState extends State<TodayList> {
       children: [
         for (final task in _done.keys)
           PaperCheckbox(
-            label: task, // crossed out once ticked
+            label: task,
             value: _done[task]!,
             onChanged: (value) => setState(() => _done[task] = value),
           ),
@@ -168,7 +163,7 @@ class _EmailFieldState extends State<EmailField> {
       label: 'Email',
       hint: 'you@example.com',
       keyboardType: TextInputType.emailAddress,
-      errorText: _error, // a wavy red-pen underline
+      errorText: _error,
       onChanged: (text) => setState(() {
         _error = text.contains('@') ? null : 'That needs an @';
       }),
@@ -231,14 +226,12 @@ class _BookingTicketState extends State<BookingTicket> {
     );
   }
 
-  // Puts the stub back and clears the "confirmed" stamp.
   void undo() => _ticket.currentState?.reset();
   // #endregion
 }
 
 // #region receipt
 Future<void> printReceipt(BuildContext context) {
-  // Prints from a slot at the top of the screen, then tears itself off.
   return PaperReceipt.show(
     context,
     title: 'Order #2041',
@@ -260,7 +253,6 @@ class SendLetter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Folds into a paper plane, flies off, then reads "✓ sent".
     return PaperPlaneButton(label: 'send', sentLabel: 'sent', onSent: onSent);
   }
 }
@@ -274,7 +266,6 @@ class Reminder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Drag the curled corner past halfway and the note comes off.
     return PaperPeel(
       size: 180,
       onPeeled: onDone,
@@ -302,7 +293,7 @@ Widget foldingGuide() {
 // #region note
 Widget pinnedNote(BuildContext context) {
   return PaperNote(
-    rotation: -0.03, // straightens up on hover
+    rotation: -0.03,
     tape: PaperTheme.of(context).palette.teal,
     child: const SizedBox(
       width: 220,
@@ -329,7 +320,7 @@ class _SleepRulerState extends State<SleepRuler> {
       value: _hours,
       min: 4,
       max: 12,
-      divisions: 16, // a mark every half hour
+      divisions: 16,
       label: (hours) => '${hours.toStringAsFixed(1)}h',
       onChanged: (hours) => setState(() => _hours = hours),
     );
@@ -350,10 +341,9 @@ class _PhoneDemoSnippetState extends State<PhoneDemoSnippet> {
   final _fingertip = PaperDemoController();
   final _stamp = GlobalKey();
 
-  // Call _demo.play() in initState. A real touch on the screen stops it.
   late final _demo = PaperDemoScript(
     controller: _fingertip,
-    steps: [PaperDemoStep.tapKey(_stamp)], // taps the real button
+    steps: [PaperDemoStep.tapKey(_stamp)],
   );
 
   @override
@@ -391,7 +381,6 @@ class _PhoneDemoSnippetState extends State<PhoneDemoSnippet> {
 Widget invitation() {
   return PaperEnvelope(
     to: 'for tobi',
-    // Tap to crack the seal; tap again to put the letter back.
     letter: const Text(
       'dear tobi,\n'
       'the zine swap is on saturday at 3pm.\n'
@@ -440,7 +429,7 @@ Widget coverLetter() {
     'dear hiring team,\n'
     'I build apps in Flutter, by hand.',
     charDelay: Duration(milliseconds: 60),
-    seed: 26, // the same wobble every time
+    seed: 26,
   );
 }
 // #endregion
@@ -450,7 +439,6 @@ Widget deskCalendar() {
   return PaperFlipPad(
     size: const Size(280, 180),
     onPageChanged: (page) => debugPrint('now on $page'),
-    // Tap or swipe up to flip; swipe down to go back.
     pages: const [
       Text('monday\nscan the film'),
       Text('wednesday\nlay out the zine'),
@@ -488,7 +476,6 @@ class _ReminderSettingState extends State<ReminderSetting> {
 Widget secret() {
   return const SizedBox(
     width: 320,
-    // Tap to lift the marker off; tap again to black it out.
     child: PaperRedact(
       'the spare key is under the third plant pot, not the doormat.',
     ),
@@ -524,7 +511,6 @@ class _CoffeeCardState extends State<CoffeeCard> {
 // #region paperclip
 Widget expenseReport() {
   return const PaperClip(
-    // Tap to slide the receipt out; tap again to clip it back.
     attachment: PaperNote(rotation: 0, child: Text('receipt\n£12.40')),
     child: SizedBox(
       width: 280,
@@ -549,19 +535,15 @@ Widget coupon() {
 
 // #region haptics
 Widget hapticStamp() {
-  return PaperStampButton(
-    label: 'approved',
-    // The kit's widgets already play their own pattern; use them in yours too.
-    onPressed: () {},
-  );
+  return PaperStampButton(label: 'approved', onPressed: () {});
 }
 
 void onCardPunched() {
-  PaperHaptics.punch(); // one heavy thud
+  PaperHaptics.punch();
 }
 
 void onPageTorn() {
-  PaperHaptics.tear(); // a run of clicks along the perforation
+  PaperHaptics.tear();
 }
 
 // #endregion

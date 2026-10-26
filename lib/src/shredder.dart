@@ -89,7 +89,6 @@ class PaperShredderState extends State<PaperShredder>
         ],
       );
     }
-    // Same size as before; the strips fall past the bottom edge.
     return SizedBox(
       width: size.width,
       height: size.height + 10,
@@ -105,7 +104,6 @@ class PaperShredderState extends State<PaperShredder>
           return Stack(
             clipBehavior: Clip.none,
             children: [
-              // What's still above the slot, in one piece.
               Positioned(
                 left: 0,
                 top: feed,
@@ -117,7 +115,6 @@ class PaperShredderState extends State<PaperShredder>
                   child: widget.child,
                 ),
               ),
-              // The strips below it, each its own column of the page.
               for (var i = 0; i < count; i++)
                 _strip(i, count, stripWidth, size, feed, slotY, t),
               Positioned(
@@ -135,7 +132,6 @@ class PaperShredderState extends State<PaperShredder>
 
   Widget _strip(int i, int count, double stripWidth, Size size, double feed,
       double slotY, double t) {
-    // Each strip drops at its own moment once the page is through.
     final start = 0.6 + 0.25 * ((i * 7) % count) / count;
     final fall = ((t - start) / 0.25).clamp(0.0, 1.0);
     final curl = (i.isEven ? 1 : -1) * (0.03 + 0.02 * math.sin(i * 1.7));
@@ -179,7 +175,6 @@ class _RectClipper extends CustomClipper<Rect> {
   bool shouldReclip(_RectClipper old) => old.rect != rect;
 }
 
-// The shredder's mouth: a dark bar with a row of cutter teeth.
 class _Slot extends StatelessWidget {
   const _Slot({required this.color});
 

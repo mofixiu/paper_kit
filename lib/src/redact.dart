@@ -113,7 +113,6 @@ class _BarPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     if (lines.isEmpty || progress.value == 0) return;
     final paint = Paint()..color = ink;
-    // One marker stroke per line, each starting when the one above is done.
     final share = 1 / lines.length;
     for (var i = 0; i < lines.length; i++) {
       final t = ((progress.value - i * share) / share).clamp(0.0, 1.0);

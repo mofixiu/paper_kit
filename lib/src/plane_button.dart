@@ -186,7 +186,6 @@ class _PlanePainter extends CustomPainter {
   final Color foldLine;
   final bool hovered;
 
-  // The plane, nose to the right, around its centre.
   static const _nose = Offset(30, -6);
   static const _notch = Offset(-12, 0);
   static const _plane = [
@@ -216,7 +215,6 @@ class _PlanePainter extends CustomPainter {
         Offset.lerp(button[i], _plane[i], fold)!,
     ];
 
-    // The flight: a gentle dip, then up and away to the right.
     const p1 = Offset(70, 10);
     const p2 = Offset(180, -120);
     final u = 1 - fly;
@@ -228,7 +226,6 @@ class _PlanePainter extends CustomPainter {
     canvas.translate(size.width / 2, size.height / 2);
 
     if (fly > 0) {
-      // A dotted trail behind the plane.
       final trail = Paint()..color = color.withValues(alpha: 0.35 * (1 - fly));
       for (var i = 0; i < 14; i++) {
         final s = fly * i / 14;

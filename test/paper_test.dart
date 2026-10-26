@@ -172,7 +172,6 @@ void main() {
     expect(sent, 1);
     expect(find.text('sent'), findsOneWidget);
     await pumpFrames(tester, const Duration(milliseconds: 2000));
-    // Ready to send again.
     await tester.tap(find.byType(PaperPlaneButton));
     await pumpFrames(tester, const Duration(milliseconds: 1200));
     expect(sent, 2);

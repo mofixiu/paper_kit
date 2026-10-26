@@ -128,8 +128,6 @@ class _PaperClipState extends State<PaperClip>
   }
 }
 
-// A Gem clip, bent from one wire: the inner loop lies in front of the paper and
-// the outer loop behind it.
 class _ClipPainter extends CustomPainter {
   _ClipPainter({required this.wire, required this.front});
 

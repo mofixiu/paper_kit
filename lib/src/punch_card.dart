@@ -172,7 +172,6 @@ class _PaperPunchCardState extends State<PaperPunchCard>
                         opacity: (1 - t).clamp(0.0, 1.0),
                         child: Transform(
                           alignment: Alignment.center,
-                          // Tumbling: the disc turns and tips edge-on as it falls.
                           transform: Matrix4.rotationZ(t * 5)
                             ..multiply(Matrix4.diagonal3Values(
                                 1, math.cos(t * 9).abs() * 0.8 + 0.2, 1)),
@@ -243,7 +242,6 @@ class _CardPainter extends CustomPainter {
         ..style = PaintingStyle.stroke
         ..strokeWidth = 1,
     );
-    // The circles still to punch, drawn as dotted rings.
     final dots = Paint()..color = dash;
     for (final hole in holes.skip(punched)) {
       for (var a = 0.0; a < math.pi * 2; a += math.pi / 10) {
